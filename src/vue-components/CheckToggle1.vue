@@ -49,6 +49,7 @@ export default {
         selectedItems.push(items[i]);
       }   
       this.selectedItems = selectedItems;
+      // todo: add disabled button toggle
 
     },
     unCheckAll: function() {
