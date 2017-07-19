@@ -36,10 +36,31 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     return {
       items: ["item1", "item2"],
       selectedItems: [],
-      checkAllButton: false
+      checkAllButton: false,
+      unCheckAllButton: true
     };
   },
 
+  watch: {
+    selectedItems: function selectedItems() {
+      var selectedItems = this.selectedItems;
+      var items = this.items;
+
+      // for checkAllButton
+      if (selectedItems.length === items.length) {
+        this.checkAllButton = true;
+      } else {
+        this.checkAllButton = false;
+      }
+
+      // for unCheckAllButton
+      if (selectedItems.length === 0) {
+        this.unCheckAllButton = true;
+      } else {
+        this.unCheckAllButton = false;
+      }
+    }
+  },
   mounted: function mounted() {
     console.log("mounted");
   },
@@ -131,6 +152,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }
   }, [_vm._v("checkAll")]), _vm._v(" "), _c('button', {
+    attrs: {
+      "disabled": _vm.unCheckAllButton
+    },
     on: {
       "click": function($event) {
         _vm.toggleCheck(false)

@@ -18,7 +18,7 @@
       </template>
       <!-- end checkToggle1-01 -->
       <button :disabled="checkAllButton" v-on:click="toggleCheck(true)">checkAll</button>
-      <button v-on:click="toggleCheck(false)">unCheckAll</button>
+      <button :disabled="unCheckAllButton" v-on:click="toggleCheck(false)">unCheckAll</button>
       <p>Selected: {{ selectedItems }}</p>
     </div>  
   </div>
@@ -32,7 +32,29 @@ export default {
         "item2"
       ],
       selectedItems: [],
-      checkAllButton: false
+      checkAllButton: false,
+      unCheckAllButton: true
+    }
+  },
+  watch: {
+    selectedItems: function () {
+      let selectedItems = this.selectedItems;
+      let items = this.items;
+      
+      // for checkAllButton
+      if (selectedItems.length === items.length) {
+        this.checkAllButton = true;
+      } else {
+        this.checkAllButton = false;
+      }
+
+      // for unCheckAllButton
+      if (selectedItems.length === 0) {
+        this.unCheckAllButton = true;
+      } else {
+        this.unCheckAllButton = false;
+      }
+
     }
   },
   mounted: function() {
