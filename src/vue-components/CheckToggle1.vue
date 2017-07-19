@@ -5,7 +5,7 @@
       <template v-for="i in items">
       <span class="checkToggle1-01">
         <input type="checkbox" v-bind:id="i"
-         v-model="selectedItems" v-bind:value="i" />
+         v-model="selectedItems" v-bind:value="i" :disabled="disabled" />
         <label v-bind:for="i" class="checkToggle1-01_bg">
           <span class="checkToggle1-01_switch">
             &nbsp;
@@ -17,8 +17,10 @@
       </span>
       </template>
       <!-- end checkToggle1-01 -->
-      <button :disabled="checkAllButton" v-on:click="toggleCheck(true)">checkAll</button>
-      <button :disabled="unCheckAllButton" v-on:click="toggleCheck(false)">unCheckAll</button>
+      <button v-show="!disabled" :disabled="checkAllButton" v-on:click="toggleCheck(true)">checkAll</button>
+      <button v-show="!disabled" :disabled="unCheckAllButton" v-on:click="toggleCheck(false)">unCheckAll</button>
+      <!-- for previewing disabled css style -->
+      <button v-on:click="disabled = !disabled">{{ disabled ? "enable" : "disable" }}</button>
       <p>Selected: {{ selectedItems }}</p>
     </div>  
   </div>
@@ -32,6 +34,8 @@ export default {
         "item2"
       ],
       selectedItems: [],
+      disabled: false,
+      // 
       checkAllButton: false,
       unCheckAllButton: true
     }
@@ -40,7 +44,7 @@ export default {
     selectedItems: function () {
       let selectedItems = this.selectedItems;
       let items = this.items;
-      
+            
       // for checkAllButton
       if (selectedItems.length === items.length) {
         this.checkAllButton = true;
@@ -54,8 +58,7 @@ export default {
       } else {
         this.unCheckAllButton = false;
       }
-
-    }
+    },
   },
   mounted: function() {
     console.log("mounted");
