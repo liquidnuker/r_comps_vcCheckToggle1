@@ -1,1 +1,186 @@
-webpackJsonp([1],{11:function(e,t,s){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.default={data:function(){return{items:["item1","item2"],selectedItems:[],checkAllButton:!1}},mounted:function(){console.log("mounted"),this.checkAll()},methods:{checkAll:function(){var e=this.items,t=this.selectedItems;t=[];for(var s in e)t.push(e[s]);this.selectedItems=t},unCheckAll:function(){this.selectedItems=[]}}}},12:function(e,t){e.exports={render:function(){var e=this,t=e.$createElement,s=e._self._c||t;return s("div",[s("div",{staticClass:"row col-sm-12"},[e._l(e.items,function(t){return[s("span",{staticClass:"checkToggle1-01"},[s("input",{directives:[{name:"model",rawName:"v-model",value:e.selectedItems,expression:"selectedItems"}],attrs:{type:"checkbox",id:t},domProps:{value:t,checked:Array.isArray(e.selectedItems)?e._i(e.selectedItems,t)>-1:e.selectedItems},on:{__c:function(s){var c=e.selectedItems,l=s.target,n=!!l.checked;if(Array.isArray(c)){var i=t,o=e._i(c,i);n?o<0&&(e.selectedItems=c.concat(i)):o>-1&&(e.selectedItems=c.slice(0,o).concat(c.slice(o+1)))}else e.selectedItems=n}}}),e._v(" "),s("label",{staticClass:"checkToggle1-01_bg",attrs:{for:t}},[s("span",{staticClass:"checkToggle1-01_switch"},[e._v("\n           \n        ")])]),e._v(" "),s("label",{staticClass:"checkToggle1-01_vlabel",attrs:{for:t}},[e._v("\n        "+e._s(t)+"\n      ")])])]}),e._v(" "),s("button",{attrs:{disabled:e.checkAllButton},on:{click:function(t){e.checkAll()}}},[e._v("checkAll")]),e._v(" "),s("button",{on:{click:function(t){e.unCheckAll()}}},[e._v("unCheckAll")]),e._v(" "),s("p",[e._v("Selected: "+e._s(e.selectedItems))])],2)])},staticRenderFns:[]}},8:function(e,t,s){var c=s(0)(s(11),s(12),null,null);e.exports=c.exports}});
+webpackJsonp([1],{
+
+/***/ 11:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      items: ["item1", "item2"],
+      selectedItems: [],
+      checkAllButton: false
+    };
+  },
+
+  mounted: function mounted() {
+    console.log("mounted");
+  },
+  methods: {
+    toggleCheck: function toggleCheck(checked) {
+      var items = this.items;
+      var selectedItems = this.selectedItems;
+
+      if (checked) {
+        // push
+        selectedItems = [];
+        for (var i in items) {
+          selectedItems.push(items[i]);
+        }
+      } else {
+        selectedItems = [];
+      }
+
+      this.selectedItems = selectedItems;
+      // todo: add disabled button toggle
+    }
+  }
+});
+
+/***/ }),
+
+/***/ 12:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', [_c('div', {
+    staticClass: "row col-sm-12"
+  }, [_vm._l((_vm.items), function(i) {
+    return [_c('span', {
+      staticClass: "checkToggle1-01"
+    }, [_c('input', {
+      directives: [{
+        name: "model",
+        rawName: "v-model",
+        value: (_vm.selectedItems),
+        expression: "selectedItems"
+      }],
+      attrs: {
+        "type": "checkbox",
+        "id": i
+      },
+      domProps: {
+        "value": i,
+        "checked": Array.isArray(_vm.selectedItems) ? _vm._i(_vm.selectedItems, i) > -1 : (_vm.selectedItems)
+      },
+      on: {
+        "__c": function($event) {
+          var $$a = _vm.selectedItems,
+            $$el = $event.target,
+            $$c = $$el.checked ? (true) : (false);
+          if (Array.isArray($$a)) {
+            var $$v = i,
+              $$i = _vm._i($$a, $$v);
+            if ($$c) {
+              $$i < 0 && (_vm.selectedItems = $$a.concat($$v))
+            } else {
+              $$i > -1 && (_vm.selectedItems = $$a.slice(0, $$i).concat($$a.slice($$i + 1)))
+            }
+          } else {
+            _vm.selectedItems = $$c
+          }
+        }
+      }
+    }), _vm._v(" "), _c('label', {
+      staticClass: "checkToggle1-01_bg",
+      attrs: {
+        "for": i
+      }
+    }, [_c('span', {
+      staticClass: "checkToggle1-01_switch"
+    }, [_vm._v("\n           \n        ")])]), _vm._v(" "), _c('label', {
+      staticClass: "checkToggle1-01_vlabel",
+      attrs: {
+        "for": i
+      }
+    }, [_vm._v("\n        " + _vm._s(i) + "\n      ")])])]
+  }), _vm._v(" "), _c('button', {
+    attrs: {
+      "disabled": _vm.checkAllButton
+    },
+    on: {
+      "click": function($event) {
+        _vm.toggleCheck(true)
+      }
+    }
+  }, [_vm._v("checkAll")]), _vm._v(" "), _c('button', {
+    on: {
+      "click": function($event) {
+        _vm.toggleCheck(false)
+      }
+    }
+  }, [_vm._v("unCheckAll")]), _vm._v(" "), _c('p', [_vm._v("Selected: " + _vm._s(_vm.selectedItems))])], 2)])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-41dc639e", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ 8:
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(0)(
+  /* script */
+  __webpack_require__(11),
+  /* template */
+  __webpack_require__(12),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "D:\\WINDOWS\\GD2\\web\\_node_dev\\git_vueCheckToggle1\\src\\vue-components\\CheckToggle1.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] CheckToggle1.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-41dc639e", Component.options)
+  } else {
+    hotAPI.reload("data-v-41dc639e", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ })
+
+});

@@ -17,8 +17,8 @@
       </span>
       </template>
       <!-- end checkToggle1-01 -->
-      <button :disabled="checkAllButton" v-on:click="checkAll()">checkAll</button>
-      <button v-on:click="unCheckAll()">unCheckAll</button>
+      <button :disabled="checkAllButton" v-on:click="toggleCheck(true)">checkAll</button>
+      <button v-on:click="toggleCheck(false)">unCheckAll</button>
       <p>Selected: {{ selectedItems }}</p>
     </div>  
   </div>
@@ -37,23 +37,24 @@ export default {
   },
   mounted: function() {
     console.log("mounted");
-    this.checkAll();
   },
   methods: {
-    checkAll: function() {
+    toggleCheck: function(checked) {
       let items = this.items;
       let selectedItems = this.selectedItems;
 
-      selectedItems = [];
-      for (let i in items) {
-        selectedItems.push(items[i]);
-      }   
+      if (checked) {
+        // push
+        selectedItems = [];
+        for (let i in items) {
+          selectedItems.push(items[i]);
+        }
+      } else {
+        selectedItems = [];
+      }
+
       this.selectedItems = selectedItems;
       // todo: add disabled button toggle
-
-    },
-    unCheckAll: function() {
-      this.selectedItems = [];
     }
   }
 }
