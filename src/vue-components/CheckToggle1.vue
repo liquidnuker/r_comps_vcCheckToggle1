@@ -4,9 +4,11 @@
       <!-- checkToggle1-01 -->
       <template v-for="i in items">
       <span class="checkToggle1-01">
-        <input type="checkbox" v-bind:id="i"
-         v-model="selectedItems" v-bind:value="i" :disabled="disabled" />
-        <label v-bind:for="i" class="checkToggle1-01_bg">
+        <input type="checkbox" :id="i"
+         v-model="selectedItems" :value="i" 
+         :disabled="disabled"
+         :aria-disabled="disabled" />
+        <label v-bind:for="i" class="checkToggle1-01_bg" role="checkbox">
           <span class="checkToggle1-01_switch">
             &nbsp;
           </span>
@@ -17,10 +19,18 @@
       </span>
       </template>
       <!-- end checkToggle1-01 -->
-      <button v-show="!disabled" :disabled="checkAllButton" v-on:click="toggleCheck(true)">checkAll</button>
-      <button v-show="!disabled" :disabled="unCheckAllButton" v-on:click="toggleCheck(false)">unCheckAll</button>
+      
+      <button v-show="!disabled" 
+      :disabled="checkAllButton" 
+      :aria-disabled="checkAllButton"
+      @click="toggleCheck(true)">checkAll</button>
+      
+      <button v-show="!disabled" 
+      :disabled="unCheckAllButton" 
+      :aria-disabled="unCheckAllButton"
+      @click="toggleCheck(false)">unCheckAll</button>
       <!-- for previewing disabled css style -->
-      <button v-on:click="disabled = !disabled">{{ disabled ? "enable" : "disable" }}</button>
+      <button @click="disabled = !disabled">{{ disabled ? "enable" : "disable" }}</button>
       <p>Selected: {{ selectedItems }}</p>
     </div>  
   </div>
@@ -79,7 +89,6 @@ export default {
       }
 
       this.selectedItems = selectedItems;
-      // todo: add disabled button toggle
     }
   }
 }

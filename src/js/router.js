@@ -5,7 +5,8 @@ import vcRouterView from "../vue-components/RouterView.vue";
 
 Vue.use(VueRouter);
 
-const vcHome = (resolve) => import("../vue-components/Home.vue").then(resolve);
+// const vcHome = (resolve) => import("../vue-components/Home.vue").then(resolve);
+const vcHome = () => import("../vue-components/Home.vue");
 
 const routes = [
   {
